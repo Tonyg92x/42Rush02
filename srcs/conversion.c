@@ -1,93 +1,26 @@
 #include "rush02.h"
 #include "libft.h"
 
-void	ft_conversion(char *string, int fd)
+void	ft_conversion(char *string, char *path)
 {
 	char	*sortie;
 	
-	sortie = ft_search_dict(fd, string);
+	sortie = ft_search_dict(string, path);
 	if (sortie == NULL)
-		ft_printf("Dict Error\n");
+		return;
 	else
 		ft_printf("%s\n", sortie);
 	free(sortie);
 }
 
-char	*ft_search_dict(int fd, char *value)
+char	*ft_search_dict(char *value, char *path)
 {
-	char	*line;
-	char	*try;
-	char	*retour;
-	bool	done;
-	int	i;
-	int	y;
+	char	*word;
 
-	retour = malloc(1000);
-	try = malloc(1000);
-	done = false;
-	while (done == false)
-	{
-		i = 0;
-		line = ft_get_line(fd);
-		if (line == NULL)
-			break;
-		while (line[i] != ':')
-		{
-			try[i] = line[i];
-			i++;
-		}
-		if (ft_v_check(value, try))
-		{
-			i++;
-			y = 0;
-			while(line[i] != '\0')
-				retour[y++] = line[i++];
-			free(try);
-			free(line);
-			return (retour);
-		}
-		free(line);
-	}
-	return (NULL);
-}
-
-bool	ft_v_check(char *value, char *try)
-{
-	int	i;
-
-	i = 0;
-	while (value[i])
-	{
-		if (value[i] != try[i])
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
-char	*ft_get_line(int fd)
-{
-	char	*retour;
-	char	*character;
-	int	len;
-	int	i;
-
-	i = 0;
-	character = malloc(1);
-	retour = malloc(1000);
-	while (retour[i - 1] != '\n')
-	{
-		len = read(fd, character, 1);
-		if (len == -1 || len == 0)
-		{
-			ft_printf("Dict Error\n");
-			free(retour);
-			return (NULL);
-		}
-		retour[i] = character[0];
-		i++;
-	}
-	free(character);
-	return (retour);
+	// Reste a faire l'algo pour ecrire nimportequel nombre
+	word = parse(value, path);
+	if (word == NULL)
+		ft_printf("Dict Error\n");
+	return (word);
 }
 

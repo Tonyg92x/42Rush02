@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/04 08:08:38 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/04 15:24:34 by tonyg            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,8 @@ LIBFT_INC		= libft/includes/
 SRCS_FILES		=				\
 			main.c				\
 			conversion.c			\
+			conversion_utils.c		\
+			conversion_utils2.c		\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 
