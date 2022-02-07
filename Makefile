@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/04 15:24:34 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/07 11:28:39 by tonyg            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ SRCS_FILES		=				\
 			conversion.c			\
 			conversion_utils.c		\
 			conversion_utils2.c		\
+			dict_search.c			\
+			dict_search_utils.c		\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 

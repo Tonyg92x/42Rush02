@@ -43,7 +43,7 @@ char	*parse(char *value, char *path)
 	char	*line;
 	int	fd;
 
-	retour = malloc(1000);
+	retour = malloc(100);
 	fd = open(path, O_RDONLY, 0600);
 	while (true)
 	{

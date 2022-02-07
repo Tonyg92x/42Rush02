@@ -3,24 +3,37 @@
 
 void	ft_conversion(char *string, char *path)
 {
-	char	*sortie;
-	
-	sortie = ft_search_dict(string, path);
-	if (sortie == NULL)
-		return;
-	else
-		ft_printf("%s\n", sortie);
-	free(sortie);
+	ft_search_dict(string, path);
 }
 
-char	*ft_search_dict(char *value, char *path)
+char	*decallage(char *value, int nb)
 {
-	char	*word;
+	int	i;
 
-	// Reste a faire l'algo pour ecrire nimportequel nombre
-	word = parse(value, path);
-	if (word == NULL)
-		ft_printf("Dict Error\n");
-	return (word);
+	while(nb > 0)
+	{
+		i = 0;
+		while (value[i + 1])
+		{
+			value[i] = value[i + 1];
+			i++;
+		}
+		nb--;
+	}
+	value[i] = '\0';
+	return (value);
+}
+
+char	*fill_digit(char *value, char *container, int nb)
+{
+	int	i;
+
+	i = 0;
+	while(nb > 0)
+	{
+		container[i] = value[i];
+		nb--;
+	}
+	return (container);
 }
 
