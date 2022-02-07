@@ -9,10 +9,10 @@
   <a href="https://github.com/github_username/repo_name">
   </a>
 
-<h3 align="center">get_next_line</h3>
+<h3 align="center">Rush02</h3>
 
   <p align="center">
-    Home made get_next_line function for c/c++ programming. Project of 42 cursus.
+    42 Piscine rush02
   </p>
 </div>
 
