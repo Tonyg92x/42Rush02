@@ -44,6 +44,8 @@ char	*parse(char *value, char *path)
 	int	fd;
 
 	retour = malloc(100);
+	if (value[0] == '0' && value[1] != '0')
+		decallage(value, 1);
 	fd = open(path, O_RDONLY, 0600);
 	while (true)
 	{

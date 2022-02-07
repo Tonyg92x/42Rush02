@@ -29,11 +29,17 @@ char	*ft_put_centaine(char *value, char *path, int *digit)
         char    *container;
 	int	nb;
 
-        container = malloc(50);
-        container[0] = value[0];
-	ft_simple_parse(container, path);
-	ft_printf(" hundred", value);
+	container = malloc(50);
+	container[0] = value[0];
+	container[1] = '\0';
+	if (container[0] != '0')
+	{
+		ft_simple_parse(container, path);
+		nb = 100;
+		ft_simple_parse(ft_itoa(nb), path);
+	}
 	decallage(value, 1);
+	container = malloc(50);
 	container[0] = value[0];
 	container[1] = value[1];
 	container[2] = '\0';
@@ -41,8 +47,8 @@ char	*ft_put_centaine(char *value, char *path, int *digit)
 	if (nb > 0)
 		ft_put_dizaine(value, path, digit);
 	else
-		(*digit) =- 2;
-	(*digit) =- 1;
+		(*digit) = (*digit) - 2;
+	(*digit) = (*digit) - 1;
         return (value);
 }
 
@@ -64,12 +70,15 @@ char	*ft_put_dizaine(char *value, char *path, int *digit)
 		container[1] = '0';
 		ft_simple_parse(container, path);
 		container = malloc(50);
-		container[0] = value[1];
-		container[1] = '\0';
-		ft_simple_parse(container, path);
+		if (value[1] != '0')
+		{
+			container[0] = value[1];
+			container[1] = '\0';
+			ft_simple_parse(container, path);
+		}
 	}
         value = decallage(value, 2);
-	(*digit) =- 2;
+	(*digit) = (*digit) - 2;
         return (value);
 }
 
@@ -81,7 +90,7 @@ char	*ft_put_unite(char *value, char *path, int *digit)
 	container[0] = value[0];
 	ft_simple_parse(container, path);
 	value = decallage(value, 1);
-	(*digit) =- 1;
+	(*digit) = (*digit) - 1;
 	return (value);
 }
 

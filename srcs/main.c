@@ -4,11 +4,23 @@
 int	main(int argc, char **argv)
 {
 	char	path[] = "srcs/english.txt";
+	int	x;
 
 	if (argc != 2 && argc != 3)
 		return (0);
 	else if (argc == 2)
-		ft_conversion(argv[1], path);
+	{
+		
+		x = ft_atoi(argv[1]);
+		if (x > 0)
+			ft_conversion(ft_itoa(x), path);
+		else
+			ft_printf("Error\n");
+	}
 	else if (argc == 3)
-		ft_conversion(argv[2], argv[1]);
+	{
+		x = ft_atoi(argv[2]);
+		if (x > 0)
+			ft_conversion(ft_itoa(x), argv[1]);
+	}
 }
