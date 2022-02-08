@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dict_search.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 09:08:08 by aguay             #+#    #+#             */
+/*   Updated: 2022/02/08 09:44:47 by aguay            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "rush02.h"
 
-void    ft_search_dict(char *value, char *path)
+void	ft_search_dict(char *value, char *path)
 {
-        int     digit;
+	int	digit;
 
 	digit = how_much_digit(value);
-	while(digit > 0)
+	while (digit > 0)
 	{
 		if (digit == 1)
 			ft_put_unite(value, path, &digit);
@@ -21,13 +33,13 @@ void    ft_search_dict(char *value, char *path)
 		else if (digit == 10)
 			ft_billion(value, path, &digit);
 	}
-        return ;
+	return ;
 }
 
 char	*ft_put_centaine(char *value, char *path, int *digit)
 {
-        char    *container;
-	int	nb;
+	char	*container;
+	int		nb;
 
 	container = malloc(50);
 	container[0] = value[0];
@@ -49,13 +61,13 @@ char	*ft_put_centaine(char *value, char *path, int *digit)
 	else
 		(*digit) = (*digit) - 2;
 	(*digit) = (*digit) - 1;
-        return (value);
+	return (value);
 }
 
 char	*ft_put_dizaine(char *value, char *path, int *digit)
 {
-        char    *container;
-	int	nb;
+	char	*container;
+	int		nb;
 
 	container = malloc(50);
 	container[0] = value[0];
@@ -77,9 +89,9 @@ char	*ft_put_dizaine(char *value, char *path, int *digit)
 			ft_simple_parse(container, path);
 		}
 	}
-        value = decallage(value, 2);
+	value = decallage(value, 2);
 	(*digit) = (*digit) - 2;
-        return (value);
+	return (value);
 }
 
 char	*ft_put_unite(char *value, char *path, int *digit)

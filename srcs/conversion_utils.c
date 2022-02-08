@@ -1,47 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/08 09:08:02 by aguay             #+#    #+#             */
+/*   Updated: 2022/02/08 09:13:07 by aguay            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "rush02.h"
 
-int     how_much_digit(char *x)
+int	how_much_digit(char *x)
 {
-        int     i;
+	int	i;
 
-        i = 0;
-        while(x[i])
-                i++;
-        return (i);
+	i = 0;
+	while (x[i])
+		i++ ;
+	return (i);
 }
 
-char    *ft_get_line(int fd)
+char	*ft_get_line(int fd)
 {
-        char    *retour;
-        char    *character;
-        int     len;
-        int     i;
+	char	*retour;
+	char	*character;
+	int		len;
+	int		i;
 
-        i = 0;
-        character = malloc(1);
-        retour = malloc(1000);
-        while (retour[i - 1] != '\n')
-        {
-                len = read(fd, character, 1);
-                if (len == -1 || len == 0)
-                {
+	i = 0;
+	character = malloc(1);
+	retour = malloc(1000);
+	while (retour[i - 1] != '\n')
+	{
+		len = read(fd, character, 1);
+		if (len == -1 || len == 0)
+		{
 			free(character);
-                        free(retour);
-                        return (NULL);
-                }
-                retour[i] = character[0];
-                i++;
-        }
-        free(character);
-        return (retour);
+			free(retour);
+			return (NULL);
+		}
+		retour[i] = character[0];
+		i++;
+	}
+	free(character);
+	return (retour);
 }
 
 char	*parse(char *value, char *path)
 {
 	char	*retour;
 	char	*line;
-	int	fd;
+	int		fd;
 
 	retour = malloc(100);
 	if (value[0] == '0' && value[1] != '0')
@@ -55,7 +67,7 @@ char	*parse(char *value, char *path)
 		if (check_idem(line, value))
 		{
 			retour = letter(line, retour);
-			break;
+			break ;
 		}
 		free(line);
 	}

@@ -6,19 +6,12 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/07 11:28:39 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/08 09:20:32 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#*#######################################################
-##*          ERASE COMMENTS FOR BONUS PARTS            ##
-#*#######################################################
-
 ## -----  NAME OF THE PROGRAMM ----- ##
 NAME 			=  rush-02
-
-## ----- NAME OF THE BONUS PART ----- ##
-B_NAME			= push_swap_bonus
 
 ## ----- CHOOSE COMPILER AND FLAGS ----- ##
 CC				= gcc
@@ -26,7 +19,6 @@ CFLAGS			= -Wall -Wextra -Werror -g
 
 ## ----- PATH TO FOLDERS ----- ##
 SRCS_DIR		= srcs/
-#*B_SRCS_DIR		= 
 
 OBJ_DIR			= obj/
 
@@ -39,30 +31,24 @@ LIBFT_OBJ		= libft/obj/
 LIBFT_INC		= libft/includes/
 
 ## ----- SOURCE FILES ----- ##
-SRCS_FILES		=				\
-			main.c				\
+SRCS_FILES		=					\
+			main.c					\
 			conversion.c			\
 			conversion_utils.c		\
 			conversion_utils2.c		\
 			dict_search.c			\
 			dict_search_utils.c		\
 
-## ----- BONUS SOURCE FILES ----- ##
-#*B_SRCS_FILES	= 
 
 ## ----- .C TO .O CONVERT ----- ##
 OBJ_FILES		= $(SRCS_FILES:.c=.o)
-#*B_OBJ_FILES		= $(B_SRCS_FILES:.c=.o)
+
 
 ## ----- ADDPREFIX TO FILES ----- ##
 # MAIN PROGRAMM #
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 VPATH			= $(SRCS_DIR) #$(B_SRCS_DIR)
-
-# BONUS PART #
-#*B_SRCS			= $(addprefix $(B_SRCS_DIR), $(B_SRCS_FILES))
-#*B_OBJS			= $(addprefix $(OBJ_DIR), $(B_OBJ_FILES))
 
 #--------------------------------------------------------------#
 
@@ -93,14 +79,6 @@ $(NAME): $(OBJS)
 	$(CC) $(OBJS) libft/libft.a -o $(NAME)
 obj:
 	@mkdir -p $(OBJ_DIR)
-
-## ----- ACTIONS FOR THE BONUS PART ----- ##
-#*bonus: $(B_NAME)
-#*	@echo "$(GREEN)Bonus Files Compiled!$(NORMAL)"
-#*
-#*$(B_NAME): $(B_OBJS)
-#*	$(LIBFT)
-#*	$(CC) $(B_OBJS) -L$(LIBFT_DIR) -lft -o $(B_NAME)
 	
 ## ----- CLEAN COMMANDS ----- ##
 clean:
@@ -110,7 +88,6 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_DIR)
-#*	$(RM) $(B_NAME) $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all bonus
